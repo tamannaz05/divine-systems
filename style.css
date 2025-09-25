@@ -96,7 +96,8 @@ html {
 .nav-links a {
   text-decoration: none;
   color: var(--text-light);
-  font-weight: 500;
+  font-weight: 700;
+  font-size: 1.1rem;
   transition: all 0.3s ease;
   position: relative;
 }
@@ -158,6 +159,7 @@ html {
   color: white;
   position: relative;
   overflow: hidden;
+  z-index: 2;
 }
 
 .hero::before {
@@ -201,16 +203,20 @@ html {
 }
 
 .hero h1 {
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   line-height: 1.2;
 }
 
 .hero p {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   margin-bottom: 2rem;
   opacity: 0.9;
+  line-height: 1.6;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .cta-button {
@@ -232,10 +238,25 @@ html {
 
 /* Section Styles */
 .section {
-  padding: 5rem 0;
+  padding: 10rem 0;
   opacity: 0;
   transform: translateY(50px);
   transition: all 0.8s ease;
+  background: var(--bg-light);
+  position: relative;
+  z-index: 1;
+}
+
+.section:nth-child(even) {
+  background: var(--card-bg);
+}
+
+[data-theme="dark"] .section {
+  background: var(--bg-dark);
+}
+
+[data-theme="dark"] .section:nth-child(even) {
+  background: var(--card-bg);
 }
 
 .section.visible {
@@ -251,9 +272,9 @@ html {
 
 .section-title {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   color: var(--primary);
 }
 
@@ -263,13 +284,14 @@ html {
 
 .section-subtitle {
   text-align: center;
-  font-size: 1.1rem;
-  margin-bottom: 3rem;
+  font-size: 1.3rem;
+  margin-bottom: 4rem;
   color: var(--text-light);
   opacity: 0.8;
-  max-width: 600px;
+  max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+  line-height: 1.6;
 }
 
 [data-theme="dark"] .section-subtitle {
@@ -359,7 +381,7 @@ html {
 }
 
 .service-card h3 {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 600;
   margin-bottom: 1rem;
   color: var(--primary);
@@ -372,6 +394,7 @@ html {
 .service-card p {
   color: var(--text-light);
   line-height: 1.6;
+  font-size: 1.1rem;
 }
 
 [data-theme="dark"] .service-card p {
@@ -431,20 +454,21 @@ html {
 .value-card {
   text-align: center;
   padding: 2rem;
+  background: var(--card-bg);
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
 }
 
-.value-number {
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--accent);
-  display: block;
-  margin-bottom: 0.5rem;
+.value-card:hover {
+  transform: translateY(-5px);
 }
 
 .value-card h3 {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   color: var(--primary);
 }
 
@@ -455,6 +479,7 @@ html {
 .value-card p {
   color: var(--text-light);
   line-height: 1.6;
+  font-size: 1.1rem;
 }
 
 [data-theme="dark"] .value-card p {
@@ -462,13 +487,29 @@ html {
 }
 
 .about-text {
-  font-size: 1.1rem;
-  line-height: 1.8;
+  font-size: 1.2rem;
+  line-height: 1.7;
   color: var(--text-light);
+  font-weight: 400;
 }
 
 [data-theme="dark"] .about-text {
   color: #d1d5db;
+}
+
+.about-text p {
+  margin-bottom: 1.5rem;
+  font-family: "Inter", sans-serif;
+}
+
+.value-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* Footer */
@@ -577,6 +618,10 @@ html {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .section {
+    padding: 6rem 0;
+  }
+
   .nav-links {
     position: fixed;
     top: 70px;
@@ -605,7 +650,7 @@ html {
   }
 
   .hero p {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   .about-content {
@@ -614,7 +659,7 @@ html {
   }
 
   .section-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   .services-grid,

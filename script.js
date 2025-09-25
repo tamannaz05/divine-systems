@@ -124,33 +124,7 @@ document.querySelectorAll(".click-animation").forEach((element) => {
   });
 });
 
-// Counter Animation for Value Numbers
-function animateCounter(element) {
-  const target = parseInt(element.textContent.replace(/[^\d]/g, ""));
-  const suffix = element.textContent.replace(/[\d.]/g, "");
-  let current = 0;
-  const increment = target / 100;
-  const duration = 2000;
-  const stepTime = duration / 100;
-
-  const timer = setInterval(() => {
-    current += increment;
-    if (current >= target) {
-      current = target;
-      clearInterval(timer);
-    }
-
-    if (suffix.includes("%")) {
-      element.textContent = Math.floor(current) + "%";
-    } else if (suffix.includes(".")) {
-      element.textContent = current.toFixed(1) + suffix.replace(/[\d.]/g, "");
-    } else {
-      element.textContent = Math.floor(current) + suffix;
-    }
-  }, stepTime);
-}
-
-// Observe value numbers for counter animation
+// Observe value numbers for simple fade-in animation (no counter needed)
 const valueObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -159,7 +133,15 @@ const valueObserver = new IntersectionObserver(
         !entry.target.classList.contains("animated")
       ) {
         entry.target.classList.add("animated");
-        animateCounter(entry.target);
+        // Simple fade-in animation for value numbers
+        entry.target.style.opacity = "0";
+        entry.target.style.transform = "translateY(20px)";
+        entry.target.style.transition = "all 0.8s ease";
+
+        setTimeout(() => {
+          entry.target.style.opacity = "1";
+          entry.target.style.transform = "translateY(0)";
+        }, 200);
       }
     });
   },
